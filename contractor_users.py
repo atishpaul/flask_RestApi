@@ -32,7 +32,7 @@ class UserData(Resource):
             conn = mysql.connect()
             cursor = conn.cursor(DictCursor)
             # cursor = conn.cursor()
-            cursor.execute("""select id, age, emailID, isUserActive, isUserPrime,availableForNewWork, city, userType, 
+            cursor.execute("""select id, name,  age, emailID, isUserActive, isUserPrime,availableForNewWork, city, userType, 
             registeredAt from mydata""")
             rows = cursor.fetchall()
             return jsonify(rows)
@@ -50,7 +50,7 @@ class SearchedFor(Resource):
             conn = mysql.connect()
             cursor = conn.cursor(DictCursor)
             # cursor = conn.cursor()
-            cursor.execute("""select id, age, emailID, isUserActive, isUserPrime,availableForNewWork, city, userType, 
+            cursor.execute("""select id, name, age, emailID, isUserActive, isUserPrime,availableForNewWork, city, userType, 
             registeredAt from mydata where city like %s""", args=[searched+'%'])
             rows = cursor.fetchall()
             return jsonify(rows)
